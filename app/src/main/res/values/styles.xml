@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="buttonPrimary">
+        <item name="android:backgroundTint">#0E63F4</item>
+        <item name="android:layout_height">59dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:radius">8dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+    <style name="buttonSecondary">
+        <item name="android:backgroundTint">#DDEBFF</item>
+        <item name="android:layout_height">59dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:radius">8dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#0E63F3</item>
+    </style>
+    <style name="container">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">#ECF3FE</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="inputField">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">58dp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:background">@drawable/input_border_radius</item>
+    </style>
+    <style name="mainHeadline">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">52dp</item>
+        <item name="android:textColor">#1D2B4F</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:layout_marginBottom">30dp</item>
+    </style>
+    <style name="radioButton">
+        <item name="android:button">@android:color/transparent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">58dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="android:background">@drawable/radio_selector</item>
+        <item name="android:textColor">@drawable/radio_text_selector</item>
+    </style>
+</resources>

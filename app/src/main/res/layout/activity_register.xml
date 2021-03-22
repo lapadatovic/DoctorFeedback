@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/container"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        style="@style/mainHeadline"
+        android:text="@string/Register" />
+
+    <EditText
+        android:id="@+id/registerNameInput"
+        android:hint="@string/placeholder_username"
+        android:inputType="textEmailAddress"
+        style="@style/inputField"
+        tools:ignore="RtlSymmetry"
+        android:autofillHints=""/>
+
+    <EditText
+        android:id="@+id/registerEmailInput"
+        android:hint="@string/placeholder_email_address"
+        android:inputType="textEmailAddress"
+        style="@style/inputField"
+        tools:ignore="RtlSymmetry"
+        android:autofillHints="" />
+
+    <EditText
+        android:id="@+id/registerPasswordInput"
+        android:hint="@string/placeholder_password"
+        android:inputType="textPassword"
+        style="@style/inputField"
+        tools:ignore="RtlSymmetry"
+        android:autofillHints="" />
+
+    <RadioGroup
+        android:id="@+id/selectRoleRadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:checked="true"
+            android:id="@+id/radioDoctor"
+            android:text="@string/Doctor"
+            android:onClick="checkButton"
+            style="@style/radioButton"/>
+
+        <RadioButton
+            android:id="@+id/patientDoctor"
+            android:text="@string/Patient"
+            android:onClick="checkButton"
+            style="@style/radioButton"
+            android:layout_marginStart="10dp" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/buttonRegister"
+        android:text="@string/Register"
+        style="@style/buttonPrimary"
+        android:layout_width="match_parent"/>
+
+</LinearLayout>

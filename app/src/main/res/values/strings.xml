@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">DoctorFeedback</string>
+    <string name="doctor_feedback">Doctor Feedback</string>
+    <string name="LogIn">Log In</string>
+    <string name="Register">Register</string>
+    <string name="Patient">Patient</string>
+    <string name="Doctor">Doctor</string>
+    <string name="SearchDoctor">Search Doctor</string>
+    <string name="FindDoctor">Find Doctor</string>
+    <string name="Feedbacks">Feedbacks</string>
+    <string name="ExtremelyBad">Extremely Bed</string>
+    <string name="Bad">Bad</string>
+    <string name="Neutral">Neutral</string>
+    <string name="Good">Good</string>
+    <string name="Amazing">Amazing</string>
+    <string name="SendFeedback">Send Feedback</string>
+    <string name="SearchResult">Search result</string>
+    <string name="ViewProfile">View Profile</string>
+    <string name="doctor_image">Doctor image</string>
+    <string name="doctorDepartment">Cartiologist</string>
+    <string name="placeholder_username">Username</string>
+    <string name="placeholder_email_address">Email address</string>
+    <string name="placeholder_password">Password</string>
+    <string name="placeholder_city">City</string>
+    <string name="placeholder_department">Department</string>
+    <string name="placeholder_enter_feedback">Feedback</string>
+    <string name="DoctorProfile">Doctor profile</string>
+    <string name="GiveFeedback">Give  Feedback</string>
+</resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/FindDoctor"
+    style="@style/container"
+    tools:context=".FindDoctorActivity">
+
+    <TextView
+        android:text="@string/FindDoctor"
+        style="@style/mainHeadline"/>
+
+    <EditText
+        android:id="@+id/editTextTextPersonName2"
+        android:hint="@string/placeholder_city"
+        android:inputType="textAutoCorrect"
+        style="@style/inputField" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName3"
+        android:hint="@string/placeholder_department"
+        android:inputType="textAutoCorrect"
+        style="@style/inputField" />
+
+    <EditText
+        android:id="@+id/searchDoctorName"
+        android:hint="@string/placeholder_username"
+        android:inputType="textPersonName"
+        style="@style/inputField"/>
+
+    <Button
+        android:id="@+id/searchButton"
+        tools:text="Search"
+        android:text="@string/SearchDoctor"
+        style="@style/buttonPrimary"/>
+
+</LinearLayout>

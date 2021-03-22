@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/container"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginVertical="100dp"
+        android:src="@drawable/logo" />
+
+    <Button
+        android:id="@+id/buttonGoToLogin"
+        android:text="@string/LogIn"
+        tools:text="@string/LogIn"
+        android:layout_marginBottom="20dp"
+        style="@style/buttonPrimary"/>
+
+    <Button
+        android:id="@+id/buttonGoToRegister"
+        android:text="@string/Register"
+        tools:text="Register"
+        style="@style/buttonPrimary"/>
+
+</LinearLayout>

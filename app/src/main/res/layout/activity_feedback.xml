@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/container"
+    tools:context=".FeedbackActivity">
+
+    <TextView
+        android:text="@string/Feedbacks"
+        style="@style/mainHeadline"/>
+
+    <EditText
+        android:id="@+id/editTextTextMultiLine"
+        android:hint="@string/placeholder_enter_feedback"
+        android:autofillHints=""
+        style="@style/inputField" />
+
+    <RadioGroup
+        android:id="@+id/selectFeedbackRateRadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp">
+
+        <RadioButton
+            android:id="@+id/ExtremelyBadButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="checkButton"
+            android:text="@string/ExtremelyBad"
+            style="@style/radioButton"
+            android:layout_marginBottom="15dp"/>
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="checkButton"
+            android:text="@string/Bad"
+            style="@style/radioButton"
+            android:layout_marginBottom="15dp"/>
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="checkButton"
+            android:text="@string/Neutral"
+            style="@style/radioButton"
+            android:layout_marginBottom="15dp"/>
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="checkButton"
+            android:text="@string/Good"
+            style="@style/radioButton"
+            android:layout_marginBottom="15dp"/>
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="checkButton"
+            android:text="@string/Amazing"
+            style="@style/radioButton" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/buttonSendFeedback"
+        android:text="@string/SendFeedback"
+        tools:text="Send Feedback"
+        style="@style/buttonPrimary" />
+
+</LinearLayout>
+
