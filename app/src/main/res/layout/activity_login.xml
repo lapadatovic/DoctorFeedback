@@ -10,7 +10,7 @@
         style="@style/mainHeadline"/>
 
     <EditText
-        android:id="@+id/registerEmailInput"
+        android:id="@+id/emailInput"
         android:hint="@string/placeholder_email_address"
         android:inputType="textEmailAddress"
         android:autofillHints=""

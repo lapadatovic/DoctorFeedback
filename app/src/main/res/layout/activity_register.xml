@@ -44,13 +44,11 @@
             android:checked="true"
             android:id="@+id/radioDoctor"
             android:text="@string/Doctor"
-            android:onClick="checkButton"
             style="@style/radioButton"/>
 
         <RadioButton
             android:id="@+id/patientDoctor"
             android:text="@string/Patient"
-            android:onClick="checkButton"
             style="@style/radioButton"
             android:layout_marginStart="10dp" />
 

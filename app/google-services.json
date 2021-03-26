@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "586260577366",
+    "project_id": "doctorfeedback-38518",
+    "storage_bucket": "doctorfeedback-38518.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586260577366:android:6c3b4f0ed276916a328ff7",
+        "android_client_info": {
+          "package_name": "com.example.doctorfeedback"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "586260577366-d8s07vlh8ghrbaj9cob6d0pquihiohgp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJ2DeE4MqRcMur_WLbchjQuoVWUgG3BkI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "586260577366-d8s07vlh8ghrbaj9cob6d0pquihiohgp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
