@@ -3,6 +3,7 @@ package com.example.doctorfeedback;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -14,9 +15,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LogInActivity extends Activity implements View.OnClickListener {
 
@@ -34,20 +37,12 @@ public class LogInActivity extends Activity implements View.OnClickListener {
 
         editTextEmailInput = (EditText) findViewById(R.id.emailInput);
         editTextPassword = (EditText) findViewById(R.id.passwordInput);
-
         mAuth = FirebaseAuth.getInstance();
     }
 
     @SuppressLint("NonConstantResourceId")
-
     @Override
     public void onClick(View v) {
-        /*
-        if (v.getId() == R.id.buttonLogin) {
-            Intent pageSearch = new Intent(LogInActivity.this, SearchResultActivity.class);
-            startActivity(pageSearch);
-        }
-        */
         switch (v.getId()){
             case R.id.buttonLogin:
                 userLogin();
@@ -91,6 +86,12 @@ public class LogInActivity extends Activity implements View.OnClickListener {
                         }
                         Intent findDoctorPage = new Intent(LogInActivity.this, FindDoctorActivity.class);
                         startActivity(findDoctorPage);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.v("LoginActivity", e.getMessage());
                     }
                 });
     }

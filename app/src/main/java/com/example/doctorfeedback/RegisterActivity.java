@@ -93,7 +93,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                             return;
                         }
 
-                        User user = new User(username, email, role);
+                        User user = new User(username, email, role, "");
                         FirebaseDatabase.getInstance().getReference("Users")
                                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                 .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {

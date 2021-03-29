@@ -10,31 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DoctorFeedback">
         <activity
-            android:name=".MainActivity"
-            android:theme="@android:style/Theme.Black.NoTitleBar">
+            android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".FeedbackActivity"
-            android:theme="@android:style/Theme.Black.NoTitleBar"/>
-        <activity
-            android:name=".FindDoctorActivity"
-            android:theme="@android:style/Theme.Black.NoTitleBar"/>
-        <activity
-            android:name=".LogInActivity"
-            android:theme="@android:style/Theme.Black.NoTitleBar"/>
-        <activity
-            android:name=".RegisterActivity"
-            android:theme="@android:style/Theme.Black.NoTitleBar"/>
-        <activity
-            android:name=".SearchResultActivity"
-            android:theme="@android:style/Theme.Black.NoTitleBar"/>
-        <activity
-            android:name=".DoctorProfileActivity"
-            android:theme="@android:style/Theme.Black.NoTitleBar"/>
+        <activity android:name=".FeedbackActivity" />
+        <activity android:name=".FindDoctorActivity" />
+        <activity android:name=".LogInActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".SearchResultActivity" />
+        <activity android:name=".DoctorProfileActivity" />
+        <activity android:name=".EditProfileActivity" />
     </application>
 
 </manifest>

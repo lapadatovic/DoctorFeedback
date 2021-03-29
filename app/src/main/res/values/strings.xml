@@ -26,4 +26,9 @@
     <string name="placeholder_enter_feedback">Feedback</string>
     <string name="DoctorProfile">Doctor profile</string>
     <string name="GiveFeedback">Give  Feedback</string>
+    <string name="profile">Profile</string>
+    <string name="log_out">Log out</string>
+    <string name="placeholder_save">Save</string>
+    <string name="placeholder_update_location">Update location</string>
+    <string name="edit_profile">Edit profile</string>
 </resources>

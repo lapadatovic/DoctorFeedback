@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/container"
+    tools:context=".EditProfileActivity">
+
+    <TextView
+        android:text="@string/edit_profile"
+        style="@style/mainHeadline" />
+
+    <EditText
+        android:id="@+id/editUsername"
+        android:hint="@string/placeholder_username"
+        android:inputType="textAutoCorrect"
+        style="@style/inputField" />
+
+    <EditText
+        android:id="@+id/editDoctorDepartment"
+        android:hint="@string/placeholder_department"
+        android:inputType="textAutoCorrect"
+        style="@style/inputField"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/buttonDoctorUpdateLocation"
+        android:text="@string/placeholder_update_location"
+        style="@style/buttonSecondary"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="20dp"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/buttonSaveProfileEdit"
+        android:text="@string/placeholder_save"
+        style="@style/buttonPrimary"
+        android:layout_width="match_parent"/>
+
+</LinearLayout>

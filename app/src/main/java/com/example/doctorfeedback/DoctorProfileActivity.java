@@ -1,7 +1,6 @@
 package com.example.doctorfeedback;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +9,7 @@ import android.widget.ListView;
 import com.example.doctorfeedback.dto.FeedbackDTO;
 import java.util.ArrayList;
 
-public class DoctorProfileActivity extends Activity implements View.OnClickListener{
+public class DoctorProfileActivity extends BaseActivity implements View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

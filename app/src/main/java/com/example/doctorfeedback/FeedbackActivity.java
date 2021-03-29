@@ -1,12 +1,11 @@
 package com.example.doctorfeedback;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-public class FeedbackActivity extends Activity {
+public class FeedbackActivity extends BaseActivity {
 
     RadioGroup radioGroup;
     RadioButton radioButton;
