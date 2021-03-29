@@ -1,12 +1,12 @@
 package com.example.doctorfeedback.dto;
 
-public class FeedbackDto {
+public class FeedbackDTO {
 
     private String headline;
     private String from;
     private Double rate;
 
-    public FeedbackDto(String headline, String from, Double rate) {
+    public FeedbackDTO(String headline, String from, Double rate) {
         this.headline = headline;
         this.from = from;
         this.rate = rate;
@@ -16,7 +16,7 @@ public class FeedbackDto {
         return headline;
     }
 
-    public FeedbackDto setHeadline(String headline) {
+    public FeedbackDTO setHeadline(String headline) {
         this.headline = headline;
         return this;
     }
@@ -25,7 +25,7 @@ public class FeedbackDto {
         return from;
     }
 
-    public FeedbackDto setFrom(String from) {
+    public FeedbackDTO setFrom(String from) {
         this.from = from;
         return this;
     }
@@ -34,7 +34,7 @@ public class FeedbackDto {
         return rate;
     }
 
-    public FeedbackDto setRate(Double rate) {
+    public FeedbackDTO setRate(Double rate) {
         this.rate = rate;
         return this;
     }

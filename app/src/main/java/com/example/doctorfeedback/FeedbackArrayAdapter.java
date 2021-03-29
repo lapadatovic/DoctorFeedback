@@ -6,17 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import com.example.doctorfeedback.dto.FeedbackDto;
+import com.example.doctorfeedback.dto.FeedbackDTO;
 import java.util.List;
 
-public class FeedbackArrayAdapter extends ArrayAdapter<FeedbackDto> {
+public class FeedbackArrayAdapter extends ArrayAdapter<FeedbackDTO> {
 
-    public FeedbackArrayAdapter(Activity context, List<FeedbackDto> feedbackList) {
+    public FeedbackArrayAdapter(Activity context, List<FeedbackDTO> feedbackList) {
         super(context, 0, feedbackList);
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        FeedbackDto currentFeedback = getItem(position);
+        FeedbackDTO currentFeedback = getItem(position);
         View listFeedback = convertView;
         if (listFeedback == null) {
             listFeedback = LayoutInflater.from(getContext()).inflate(R.layout.feedback_card, parent, false);

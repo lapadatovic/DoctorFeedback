@@ -22,8 +22,6 @@ public class LogInActivity extends Activity implements View.OnClickListener {
 
     private EditText editTextEmailInput;
     private EditText editTextPassword;
-    private Button buttonLogin;
-
     private FirebaseAuth mAuth;
 
     @Override
@@ -87,14 +85,12 @@ public class LogInActivity extends Activity implements View.OnClickListener {
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Intent pageSearch = new Intent(LogInActivity.this, SearchResultActivity.class);
-                            startActivity(pageSearch);
-                            Log.d(String.valueOf(LogInActivity.this), "IS LOGED");
-                        }
-                        else{
+                        if(!task.isSuccessful()) {
                             Toast.makeText(LogInActivity.this, "Failed to login! Please check your credentials",Toast.LENGTH_LONG).show();
+                            return;
                         }
+                        Intent findDoctorPage = new Intent(LogInActivity.this, FindDoctorActivity.class);
+                        startActivity(findDoctorPage);
                     }
                 });
     }

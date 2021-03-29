@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
-import com.example.doctorfeedback.dto.FeedbackDto;
+import com.example.doctorfeedback.dto.FeedbackDTO;
 import java.util.ArrayList;
 
 public class DoctorProfileActivity extends Activity implements View.OnClickListener{
@@ -38,17 +38,13 @@ public class DoctorProfileActivity extends Activity implements View.OnClickListe
         }
     }
 
-    private ArrayList<FeedbackDto> getFeedback() {
-        ArrayList<FeedbackDto> feedbackList = new ArrayList<FeedbackDto>();
-        feedbackList.add(new FeedbackDto("Amazing doctor!", "James", 5.0));
-        feedbackList.add(new FeedbackDto("Good experience", "Maria", 4.0));
-        feedbackList.add(new FeedbackDto("Super doctor!", "Tim", 4.5));
-        feedbackList.add(new FeedbackDto("Super doctor!", "Tim", 4.5));
-        feedbackList.add(new FeedbackDto("Super doctor!", "Tim", 4.5));
-        feedbackList.add(new FeedbackDto("Super doctor!", "Tim", 4.5));
-        feedbackList.add(new FeedbackDto("Super doctor!", "Tim", 4.5));
-        feedbackList.add(new FeedbackDto("Super doctor!", "Tim", 4.5));
-        feedbackList.add(new FeedbackDto("Great doctor!", "Tim", 4.5));
+    private ArrayList<FeedbackDTO> getFeedback() {
+        ArrayList<FeedbackDTO> feedbackList = new ArrayList<FeedbackDTO>();
+        feedbackList.add(new FeedbackDTO("Amazing doctor!", "James", 5.0));
+        feedbackList.add(new FeedbackDTO("Good experience", "Maria", 4.0));
+        feedbackList.add(new FeedbackDTO("Super doctor!", "Tim", 4.5));
+        feedbackList.add(new FeedbackDTO("Super doctor!", "Tim", 4.5));
+        feedbackList.add(new FeedbackDTO("Super doctor!", "Tim", 4.5));
         return feedbackList;
     }
 }
