@@ -83,7 +83,7 @@ public class EditProfileActivity extends BaseActivity implements View.OnClickLis
         if(userProfile.role.toLowerCase().equals("doctor")) {
             department = inputEditDepartment.getText().toString();
         }
-        User newUser = new User(username, userProfile.emailAddress, userProfile.role, department);
+        User newUser = new User(username, userProfile.emailAddress, userProfile.role, department, userProfile.rate);
         mUsersReference.child(currentUser.getUid()).setValue(newUser);
         Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
     }

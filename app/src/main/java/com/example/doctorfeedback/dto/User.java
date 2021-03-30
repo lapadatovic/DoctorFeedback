@@ -6,15 +6,19 @@ public class User {
     public String username;
     public String emailAddress;
     public String role;
-    public String department = ""; // For doctors
+
+    // For doctors
+    public String department = "";
+    public double rate = 0;
 
     public User() {}
 
-    public User(String username, String emailAddress, String role, String department) {
+    public User(String username, String emailAddress, String role, String department, double rate) {
 
         this.username = username;
         this.emailAddress = emailAddress;
         this.role = role;
+        this.rate = rate;
 
         if(department != null && !department.isEmpty()) {
             this.department = department;
