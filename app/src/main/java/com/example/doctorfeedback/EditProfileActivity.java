@@ -18,7 +18,6 @@ import com.google.firebase.database.ValueEventListener;
 
 public class EditProfileActivity extends BaseActivity implements View.OnClickListener {
 
-    private FirebaseAuth mAuth;
     private DatabaseReference mUsersReference;
     private FirebaseUser currentUser;
     private User userProfile;
@@ -26,7 +25,6 @@ public class EditProfileActivity extends BaseActivity implements View.OnClickLis
     private EditText inputEditUsername;
     private EditText inputEditDepartment;
     private Button buttonUpdateLocation;
-    private Button buttonUpdateProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +34,13 @@ public class EditProfileActivity extends BaseActivity implements View.OnClickLis
         inputEditUsername = (EditText) findViewById(R.id.editUsername);
         inputEditDepartment = (EditText) findViewById(R.id.editDoctorDepartment);
         buttonUpdateLocation = (Button) findViewById(R.id.buttonDoctorUpdateLocation);
-        buttonUpdateProfile = (Button) findViewById(R.id.buttonSaveProfileEdit);
+        Button buttonUpdateProfile = (Button) findViewById(R.id.buttonSaveProfileEdit);
 
         buttonUpdateLocation.setOnClickListener(this);
         buttonUpdateProfile.setOnClickListener(this);
 
 
-        mAuth = FirebaseAuth.getInstance();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
         mUsersReference = FirebaseDatabase.getInstance().getReference("Users");
 

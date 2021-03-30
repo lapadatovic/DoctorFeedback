@@ -1,9 +1,7 @@
 package com.example.doctorfeedback;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -11,15 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class LogInActivity extends Activity implements View.OnClickListener {
 
@@ -40,13 +35,10 @@ public class LogInActivity extends Activity implements View.OnClickListener {
         mAuth = FirebaseAuth.getInstance();
     }
 
-    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.buttonLogin:
-                userLogin();
-                break;
+        if (v.getId() == R.id.buttonLogin) {
+            userLogin();
         }
     }
 

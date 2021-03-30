@@ -103,7 +103,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                                     Toast.makeText(RegisterActivity.this,"Failed to register. Try again!",Toast.LENGTH_LONG).show();
                                     return;
                                 }
-                                Toast.makeText((RegisterActivity.this), "User has been register successfully!",Toast.LENGTH_LONG).show();;
+                                Toast.makeText((RegisterActivity.this), "User has been register successfully!",Toast.LENGTH_LONG).show();
                                 Intent Login = new Intent(RegisterActivity.this, LogInActivity.class);
                                 startActivity(Login);
                             }

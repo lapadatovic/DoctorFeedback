@@ -10,65 +10,74 @@
         style="@style/mainHeadline"/>
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/inputFeedbackText"
         android:hint="@string/placeholder_enter_feedback"
         android:autofillHints=""
         style="@style/inputField" />
 
-    <RadioGroup
-        android:id="@+id/selectFeedbackRateRadioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <ScrollView android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <RadioGroup
+                    android:id="@+id/selectFeedbackRateRadioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp">
 
-        <RadioButton
-            android:id="@+id/ExtremelyBadButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="checkButton"
-            android:text="@string/ExtremelyBad"
-            style="@style/radioButton"
-            android:layout_marginBottom="15dp"/>
+                    <RadioButton
+                        android:id="@+id/ExtremelyBadButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Horrible"
+                        style="@style/radioButton"
+                        android:layout_marginBottom="15dp"/>
 
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="checkButton"
-            android:text="@string/Bad"
-            style="@style/radioButton"
-            android:layout_marginBottom="15dp"/>
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Bad"
+                        style="@style/radioButton"
+                        android:layout_marginBottom="15dp"/>
 
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="checkButton"
-            android:text="@string/Neutral"
-            style="@style/radioButton"
-            android:layout_marginBottom="15dp"/>
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Neutral"
+                        style="@style/radioButton"
+                        android:layout_marginBottom="15dp"/>
 
-        <RadioButton
-            android:id="@+id/radioButton3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="checkButton"
-            android:text="@string/Good"
-            style="@style/radioButton"
-            android:layout_marginBottom="15dp"/>
+                    <RadioButton
+                        android:id="@+id/radioButton3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Good"
+                        style="@style/radioButton"
+                        android:layout_marginBottom="15dp"/>
 
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="checkButton"
-            android:text="@string/Amazing"
-            style="@style/radioButton" />
-    </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/radioButton2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Amazing"
+                        style="@style/radioButton" />
+                </RadioGroup>
 
-    <Button
-        android:id="@+id/buttonSendFeedback"
-        android:text="@string/SendFeedback"
-        tools:text="Send Feedback"
-        style="@style/buttonPrimary" />
+                <Button
+                    android:id="@+id/buttonSendFeedback"
+                    android:text="@string/SendFeedback"
+                    tools:text="Send Feedback"
+                    style="@style/buttonPrimary" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 
 </LinearLayout>
 

@@ -1,6 +1,8 @@
 package com.example.doctorfeedback.dto;
 
 public class User {
+
+    public String id;
     public String username;
     public String emailAddress;
     public String role;

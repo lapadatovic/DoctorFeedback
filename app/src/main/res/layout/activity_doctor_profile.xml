@@ -36,12 +36,14 @@
                     android:orientation="vertical"
                     android:layout_marginStart="16dp">
                     <TextView
+                        android:id="@+id/doctorProfileName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Dr. James"
                         android:textSize="22sp"
                         android:textColor="#1D2B4F"/>
                     <TextView
+                        android:id="@+id/doctorProfileDepartment"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/doctorDepartment"
@@ -99,13 +101,14 @@
             android:layout_width="match_parent"
             android:id="@+id/doctorFeedbackList"
             android:backgroundTint="#E11515"
+            android:divider="#ECF3FE"
             tools:ignore="NestedScrolling"
             android:layout_height="match_parent">
         </ListView>
     </LinearLayout>
 
     <Button
-        android:id="@+id/buttonSendFeedback"
+        android:id="@+id/buttonGoToFeedbackPage"
         android:text="@string/GiveFeedback"
         tools:text="Give Feedback"
         style="@style/buttonPrimary" />

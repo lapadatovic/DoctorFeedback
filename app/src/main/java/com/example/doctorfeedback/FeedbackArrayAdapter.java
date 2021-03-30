@@ -23,10 +23,10 @@ public class FeedbackArrayAdapter extends ArrayAdapter<FeedbackDTO> {
         }
 
         TextView feedbackHeadline = listFeedback.findViewById(R.id.feedbackHeadline);
-        feedbackHeadline.setText(currentFeedback.getHeadline());
+        feedbackHeadline.setText(currentFeedback.headline);
 
         TextView feedbackFrom = listFeedback.findViewById(R.id.feedbackFrom);
-        feedbackFrom.setText(currentFeedback.getFrom());
+        feedbackFrom.setText(currentFeedback.patientName);
 
         return listFeedback;
     }
