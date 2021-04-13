@@ -22,6 +22,12 @@
         android:inputType="textAutoCorrect"
         style="@style/inputField" />
 
+    <EditText
+        android:id="@+id/inputSearchDistance"
+        android:hint="@string/placeholder_distance_km"
+        android:inputType="number"
+        style="@style/inputField" />
+
     <Button
         android:id="@+id/buttonSearchDoctorButton"
         tools:text="Search"

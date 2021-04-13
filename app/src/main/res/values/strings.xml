@@ -31,4 +31,5 @@
     <string name="placeholder_save">Save</string>
     <string name="placeholder_update_location">Update location</string>
     <string name="edit_profile">Edit profile</string>
+    <string name="placeholder_distance_km">Distance (km)</string>
 </resources>

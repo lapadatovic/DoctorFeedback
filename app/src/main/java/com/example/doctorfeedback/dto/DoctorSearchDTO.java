@@ -6,12 +6,12 @@ public class DoctorSearchDTO implements Serializable {
 
     private String username;
     private String department;
-    private String city;
+    private double distance;
 
-    public DoctorSearchDTO(String username, String department, String city) {
+    public DoctorSearchDTO(String username, String department, double distance) {
         this.username = username;
         this.department = department;
-        this.city = city;
+        this.distance = distance;
     }
 
     public String getUsername() {
@@ -32,12 +32,12 @@ public class DoctorSearchDTO implements Serializable {
         return this;
     }
 
-    public String getCity() {
-        return city;
+    public double getDistance() {
+        return distance;
     }
 
-    public DoctorSearchDTO setCity(String city) {
-        this.city = city;
+    public DoctorSearchDTO setDistance(double distance) {
+        this.distance = distance;
         return this;
     }
 }

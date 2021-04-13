@@ -11,6 +11,7 @@ public class FindDoctorActivity extends BaseActivity implements View.OnClickList
 
     private EditText inputUsername;
     private EditText inputDepartment;
+    private EditText inputDistance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,7 @@ public class FindDoctorActivity extends BaseActivity implements View.OnClickList
 
         inputUsername = (EditText) findViewById(R.id.inputSearchDoctorName);
         inputDepartment = (EditText) findViewById(R.id.inputSearchDoctorDepartment);
+        inputDistance = (EditText) findViewById(R.id.inputSearchDistance);
 
         Button buttonSearchDoctor = (Button) findViewById(R.id.buttonSearchDoctorButton);
         buttonSearchDoctor.setOnClickListener(this);
@@ -32,11 +34,19 @@ public class FindDoctorActivity extends BaseActivity implements View.OnClickList
     }
 
     private void findDoctors() {
+
+        double distance = 0.0;
+
+        if(inputDistance.getText().length() > 0) {
+            distance = Double.parseDouble(inputDistance.getText().toString());
+        }
+
         DoctorSearchDTO doctorSearchDTO = new DoctorSearchDTO(
             inputUsername.getText().toString(),
             inputDepartment.getText().toString(),
-            ""
+            distance
         );
+
         Intent searchResultPage = new Intent(FindDoctorActivity.this, SearchResultActivity.class);
         searchResultPage.putExtra("doctorSearchDTO", doctorSearchDTO);
         startActivity(searchResultPage);
