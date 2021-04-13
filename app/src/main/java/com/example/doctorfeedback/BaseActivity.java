@@ -31,6 +31,10 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.menuOptionSearch:
+                Intent searchPage = new Intent(BaseActivity.this, FindDoctorActivity.class);
+                startActivity(searchPage);
+                return true;
             case R.id.menuOptionProfile:
                 Intent profilePage = new Intent(BaseActivity.this, EditProfileActivity.class);
                 startActivity(profilePage);

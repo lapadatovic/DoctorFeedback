@@ -8,11 +8,9 @@ import android.location.Location;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
-
 import com.example.doctorfeedback.dto.DoctorSearchDTO;
 import com.example.doctorfeedback.dto.LocationDTO;
 import com.example.doctorfeedback.dto.User;
@@ -24,7 +22,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,19 +33,20 @@ public class SearchResultActivity extends BaseActivity {
     private DoctorsSearchArrayAdapter doctorsSearchArrayAdapter;
     private DoctorSearchDTO doctorSearchDTO;
     private LocationDTO currentUserLocation;
+    private ListView searchResultDoctorList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
 
-        ListView searchResultDoctorList = (ListView) findViewById(R.id.searchDoctorResultList);
+        searchResultDoctorList = (ListView) findViewById(R.id.searchDoctorResultList);
         doctorSearchDTO = (DoctorSearchDTO) getIntent().getExtras().get("doctorSearchDTO");
 
-        // Get current distance
         getCurrentUserLocation();
+    }
 
-        // Create doctors list
+    private void renderDoctorsList() {
         addDoctorsEventListener(FirebaseDatabase.getInstance().getReference("Users"));
         doctorsSearchArrayAdapter = new DoctorsSearchArrayAdapter(this, doctorsList);
         searchResultDoctorList.setAdapter(doctorsSearchArrayAdapter);
@@ -59,9 +57,10 @@ public class SearchResultActivity extends BaseActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 User user = snapshot.getValue(User.class);
+                if(user == null) return;
                 user.id = snapshot.getKey();
                 if(user.role.toLowerCase().equals("doctor")) {
-                    LocationDTO doctorLocation = snapshot.child("location").getValue(LocationDTO.class);
+                    LocationDTO doctorLocation = new LocationDTO(user.latitude, user.longitude);
                     String username = doctorSearchDTO.getUsername();
                     String department = doctorSearchDTO.getDepartment();
                     double distance = doctorSearchDTO.getDistance();
@@ -69,17 +68,15 @@ public class SearchResultActivity extends BaseActivity {
 
                     if(!isMatch) return;
 
-                    if(doctorLocation != null && currentUserLocation != null && distance != 0) {
+                    if(currentUserLocation != null && distance != 0) {
                         double twoPointDistance = HaversineDistance.getDistance(currentUserLocation, doctorLocation);
                         if(twoPointDistance > distance) {
                             return;
                         }
                     }
 
-                    if(isMatch) {
-                        doctorsList.add(user);
-                        doctorsSearchArrayAdapter.notifyDataSetChanged();
-                    }
+                    doctorsList.add(user);
+                    doctorsSearchArrayAdapter.notifyDataSetChanged();
                 }
             }
 
@@ -121,6 +118,7 @@ public class SearchResultActivity extends BaseActivity {
                                     double latitude = addresses.get(0).getLatitude();
                                     double longitude = addresses.get(0).getLongitude();
                                     currentUserLocation = new LocationDTO(latitude, longitude);
+                                    renderDoctorsList();
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }

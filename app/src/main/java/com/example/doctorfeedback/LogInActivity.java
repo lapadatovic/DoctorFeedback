@@ -1,5 +1,6 @@
 package com.example.doctorfeedback;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,18 +29,32 @@ public class LogInActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_login);
 
         Button buttonLogin = findViewById(R.id.buttonLogin);
+        Button buttonRegister = findViewById(R.id.buttonRegister);
+
         buttonLogin.setOnClickListener(this);
+        buttonRegister.setOnClickListener(this);
 
         editTextEmailInput = (EditText) findViewById(R.id.emailInput);
         editTextPassword = (EditText) findViewById(R.id.passwordInput);
         mAuth = FirebaseAuth.getInstance();
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.buttonLogin) {
-            userLogin();
+        switch (v.getId()) {
+            case R.id.buttonLogin:
+                userLogin();
+                break;
+            case R.id.buttonRegister:
+                gotoRegisterPage();
+                break;
         }
+    }
+
+    private void gotoRegisterPage() {
+        Intent registerPage = new Intent(LogInActivity.this, RegisterActivity.class);
+        startActivity(registerPage);
     }
 
     private void userLogin() {

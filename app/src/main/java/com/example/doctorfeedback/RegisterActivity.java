@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends Activity implements View.OnClickListener {
@@ -29,7 +30,6 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         mAuth = FirebaseAuth.getInstance();
-
         editTextUsername = (EditText) findViewById(R.id.registerNameInput);
         editTextEmailAddress = (EditText) findViewById((R.id.registerEmailInput));
         editTextPassword = (EditText) findViewById(R.id.registerPasswordInput);
@@ -93,14 +93,16 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                             return;
                         }
 
-                        User user = new User(username, email, role, "", 0);
+                        User user = new User(username, email, role, "", 0, 0, 0);
+                        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                        assert currentUser != null;
                         FirebaseDatabase.getInstance().getReference("Users")
-                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                .child(currentUser.getUid())
                                 .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(!task.isSuccessful()) {
-                                    Toast.makeText(RegisterActivity.this,"Failed to register. Try again!",Toast.LENGTH_LONG).show();
+                                    Toast.makeText(RegisterActivity.this,"Failed to register. Try again!!!",Toast.LENGTH_LONG).show();
                                     return;
                                 }
                                 Toast.makeText((RegisterActivity.this), "User has been register successfully!",Toast.LENGTH_LONG).show();

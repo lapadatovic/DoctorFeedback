@@ -31,4 +31,10 @@
         style="@style/buttonPrimary"
         android:layout_width="match_parent"/>
 
+    <Button
+        android:id="@+id/buttonRegister"
+        android:text="@string/Register"
+        style="@style/buttonSecondary"
+        android:layout_width="match_parent"/>
+
 </LinearLayout>

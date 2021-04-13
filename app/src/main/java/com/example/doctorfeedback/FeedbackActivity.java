@@ -15,6 +15,7 @@ import com.example.doctorfeedback.dto.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 public class FeedbackActivity extends BaseActivity implements View.OnClickListener {
 
     DatabaseReference feedbackDatabase;
+    FirebaseUser currentUser;
     DatabaseReference userDatabase;
     RadioGroup radioGroup;
     EditText inputFeedbackText;
@@ -43,6 +45,8 @@ public class FeedbackActivity extends BaseActivity implements View.OnClickListen
         doctorID = getIntent().getExtras().get("doctorUID").toString();
         feedbackDatabase = FirebaseDatabase.getInstance().getReference("Feedback");
         userDatabase = FirebaseDatabase.getInstance().getReference("Users");
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
     }
 
     @Override
@@ -60,7 +64,7 @@ public class FeedbackActivity extends BaseActivity implements View.OnClickListen
         double rate = getRateNumber(rateText);
         String feedbackText = inputFeedbackText.getText().toString();
 
-        userDatabase.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+        userDatabase.child(currentUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()) {

@@ -31,15 +31,16 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOError;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class EditProfileActivity extends BaseActivity implements View.OnClickListener {
 
     private DatabaseReference mUsersReference;
     private FirebaseUser currentUser;
     private User userProfile;
-    private FusedLocationProviderClient fusedLocationProviderClient;
 
     private EditText inputEditUsername;
     private EditText inputEditDepartment;
@@ -68,25 +69,7 @@ public class EditProfileActivity extends BaseActivity implements View.OnClickLis
             return;
         }
 
-        mUsersReference.child(currentUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                userProfile = snapshot.getValue(User.class);
-                if(userProfile != null) {
-                    inputEditUsername.setText(userProfile.username);
-                    if(userProfile.role.toLowerCase().equals("doctor")) {
-                        inputEditDepartment.setVisibility(View.VISIBLE);
-                        inputEditDepartment.setText(userProfile.department);
-                        buttonUpdateLocation.setVisibility(View.VISIBLE);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(EditProfileActivity.this, "Something wrong happened!", Toast.LENGTH_SHORT).show();
-            }
-        });
+        getUserProfile();
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -104,18 +87,54 @@ public class EditProfileActivity extends BaseActivity implements View.OnClickLis
 
     private void updateUser() {
         String username = inputEditUsername.getText().toString();
-        String department = "";
+
+        Map<String, Object> userMap = new HashMap<>();
+        userMap.put(currentUser.getUid() + "/username", username);
+
         if(userProfile.role.toLowerCase().equals("doctor")) {
-            department = inputEditDepartment.getText().toString();
+            String department = inputEditDepartment.getText().toString();
+            userMap.put(currentUser.getUid() + "/department", department);
         }
-        User newUser = new User(username, userProfile.emailAddress, userProfile.role, department, userProfile.rate);
-        mUsersReference.child(currentUser.getUid()).setValue(newUser);
-        Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
+
+        mUsersReference.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()) {
+                    Toast.makeText(EditProfileActivity.this, "Successfully updated user", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Toast.makeText(EditProfileActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void getUserProfile() {
+        mUsersReference.child(currentUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                userProfile = snapshot.getValue(User.class);
+                if(userProfile != null) {
+                    inputEditUsername.setText(userProfile.username);
+                    if(userProfile.role.toLowerCase().equals("doctor")) {
+                        inputEditDepartment.setVisibility(View.VISIBLE);
+                        inputEditDepartment.setText(userProfile.department);
+                        buttonUpdateLocation.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(EditProfileActivity.this, "Something wrong happened", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void updateDoctorLocation() {
-        int isLocationPermissionGranted = ActivityCompat.checkSelfPermission(EditProfileActivity.this, Manifest.permission.ACCESS_FINE_LOCATION);
-        if (isLocationPermissionGranted == PackageManager.PERMISSION_GRANTED) {
+
+        int isLocationPermGranted = ActivityCompat.checkSelfPermission(EditProfileActivity.this, Manifest.permission.ACCESS_FINE_LOCATION);
+
+        if (isLocationPermGranted == PackageManager.PERMISSION_GRANTED) {
             LocationServices.getFusedLocationProviderClient(EditProfileActivity.this)
                     .getLastLocation()
                     .addOnCompleteListener(new OnCompleteListener<Location>() {
@@ -126,17 +145,15 @@ public class EditProfileActivity extends BaseActivity implements View.OnClickLis
                         Geocoder geocoder = new Geocoder(EditProfileActivity.this, Locale.getDefault());
                         try {
 
-                            // Get locations
                             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
                             double latitude = addresses.get(0).getLatitude();
                             double longitude = addresses.get(0).getLongitude();
 
-                            // Update doctor location in the Firebase
-                            LocationDTO locationDTO = new LocationDTO(latitude, longitude);
-                            mUsersReference.child(currentUser.getUid())
-                                    .child("location")
-                                    .setValue(locationDTO)
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            Map<String, Object> userMap = new HashMap<>();
+                            userMap.put(currentUser.getUid() + "/latitude", latitude);
+                            userMap.put(currentUser.getUid() + "/longitude", longitude);
+
+                            mUsersReference.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()) {
@@ -146,6 +163,7 @@ public class EditProfileActivity extends BaseActivity implements View.OnClickLis
                                     Toast.makeText(EditProfileActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                                 }
                             });
+
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
